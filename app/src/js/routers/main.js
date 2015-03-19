@@ -2,6 +2,8 @@
 var page = require('page');
 var $ = require('jquery');
 var api = require('./../datasource/api');
+var activity = require('./../templates/activity');
+
 
 
 function notfound(ctx) {
@@ -10,9 +12,10 @@ function notfound(ctx) {
 }
 
 function index() {
-    api();
-    console.log("test not index");
-    $(".app").html("Index found");
+    api(function (a) {
+        activity.render(a);
+    });
+
 }
 
 module.exports = function () {
